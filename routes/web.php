@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CheckoutPaymentController;
@@ -25,7 +25,7 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
-
+Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 Route::get('/store', [ProductController::class, 'index'])->name('store.index');
 Route::get('/shop', [ProductController::class, 'index'])->name('shop.index');
 
@@ -51,3 +51,4 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/checkout/success/{id}', [CheckoutSuccessController::class, 'index'])->name('checkout.success');
 });
+@include('admin-routes.php');
