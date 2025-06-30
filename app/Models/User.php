@@ -4,8 +4,10 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
@@ -48,27 +50,35 @@ class User extends Authenticatable
 
 
 
-    /**
-     *  =============== RELATIONSHIPS  ===============
-     */
-
-
-    /**
-     *  =============== SCOPES  ===============
-     */
-
-
-    /**
-     *  =============== FUNCTIONS  ===============
-     */
-
     public function getGroups(): array
     {
-        return [];
+        $group_ids = [1];
+        return $group_ids;
     }
 
 
+    /**
+     * The products that belong to the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function products(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class, 'cart', 'user_id', 'product_id')
+        ->withPivot('id', 'quantity')
+        ->withTimestamps();
+    }
 
+
+    /**
+     * Get all of the addresses for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function addresses(): HasMany
+    {
+        return $this->hasMany(Address::class);
+    }
 
 
 }

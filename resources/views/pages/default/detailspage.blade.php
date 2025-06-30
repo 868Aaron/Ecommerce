@@ -24,7 +24,8 @@
                                     style="color: #bbb;">Rating</span></a>
                         </p>
                         <p class="text-left">
-                            <a href="#" class="mr-2" style="color: #000;">500 <span style="color: #bbb;">Sold</span></a>
+                            <a href="#" class="mr-2" style="color: #000;">500 <span
+                                    style="color: #bbb;">Sold</span></a>
                         </p>
                     </div>
                     <p class="price"><span>${{ $data->getPrice() }}</span></p>
@@ -48,7 +49,8 @@
                                     </button>
                                 </span>
                                 <input type="text" id="quantity" name="quantity"
-                                    class="quantity form-control input-number" value="1" min="1" max="100">
+                                    class="quantity form-control input-number" value="1" min="1"
+                                    max="100">
                                 <span class="input-group-btn ml-2">
                                     <button type="button" class="quantity-right-plus btn" data-type="plus"
                                         data-field="">
@@ -81,7 +83,8 @@
                     <div class="nav nav-pills d-flex text-center" id="v-pills-tab" role="tablist"
                         aria-orientation="vertical">
                         <a class="nav-link ftco-animate active mr-lg-1" id="v-pills-1-tab" data-toggle="pill"
-                            href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Description</a>
+                            href="#v-pills-1" role="tab" aria-controls="v-pills-1"
+                            aria-selected="true">Description</a>
 
                         <a class="nav-link ftco-animate mr-lg-1" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2"
                             role="tab" aria-controls="v-pills-2" aria-selected="false">Manufacturer</a>
@@ -109,7 +112,8 @@
                             </div>
                         </div>
 
-                        <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-day-2-tab">
+                        <div class="tab-pane fade" id="v-pills-2" role="tabpanel"
+                            aria-labelledby="v-pills-day-2-tab">
                             <div class="p-4">
                                 <h3 class="mb-4">Manufactured By Nike</h3>
                                 <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came
@@ -121,7 +125,8 @@
                                     their.</p>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-day-3-tab">
+                        <div class="tab-pane fade" id="v-pills-3" role="tabpanel"
+                            aria-labelledby="v-pills-day-3-tab">
                             <div class="row p-4">
                                 <div class="col-md-7">
                                     <h3 class="mb-4">23 Reviews</h3>
