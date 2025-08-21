@@ -11,7 +11,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Product extends Model
 {
     use HasFactory;
-
+protected $fillable = [
+        'name',
+        'title',
+        'short_description',
+        'full_description',
+        'price',
+        'quantity',
+        'image_path',
+        'image_name',
+        'category',
+        'classification',
+        'status',
+    ];
 
     /**
      * Create a new Eloquent Collection instance.

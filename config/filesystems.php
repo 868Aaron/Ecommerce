@@ -44,13 +44,7 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
-        'images' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public/images/products'),
-            'url' => env('APP_URL').'/storage/images/products',
-            'visibility' => 'public',
-            'throw' => false,
-        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
@@ -60,6 +54,13 @@ return [
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
+            'throw' => false,
+        ],
+        'products' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/products'),
+            'url' => env('APP_URL').'/storage/images/products',
+            'visibility' => 'public',
             'throw' => false,
         ],
 
