@@ -11,40 +11,131 @@
 
                         @foreach ($product_data as $data)
                             <div class="col-sm-12 col-md-12 col-lg-4 ftco-animate d-flex">
-                                <div class="product d-flex flex-column">
-                                    <a href="#" class="img-prod"><img class="img-fluid" src="{{ $data->getImage() }}"
-                                            alt="Colorlib Template">
-                                        <span class="status">50% Off</span>
-                                        <div class="overlay"></div>
+                                <div class="product d-flex flex-column"
+                                    style="
+            width: 100%;
+            border: 1px solid #e0e0e0; /* Softer border for product cards */
+            border-radius: 8px; /* Slightly rounded corners for a modern look */
+            overflow: hidden; /* Ensures content stays within rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Subtle, elegant shadow */
+            transition: all 0.3s ease; /* Smooth transition for hover effects */
+            background-color: #ffffff; /* White background for product cards */
+            margin-bottom: 25px; /* Add some space between cards if they stack */
+        "
+                                    onmouseover="this.style.boxShadow='0 8px 16px rgba(0, 0, 0, 0.15)'; this.style.transform='translateY(-5px)'; this.style.borderColor='#8e44ad';"
+                                    onmouseout="this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.08)'; this.style.transform='translateY(0)'; this.style.borderColor='#e0e0e0';">
+                                    <a href="#" class="img-prod"
+                                        style="
+                display: block;
+                width: 100%;
+                height: 350px; /* Fixed height for all images */
+                overflow: hidden; /* Hide overflowing parts of the image */
+                position: relative; /* For the overlay and status */
+            ">
+                                        <img class="img-fluid" src="{{ $data->getImage() }}" alt="Product Image"
+                                            style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover; /* Ensures images cover the area without distortion */
+                    object-position: center; /* Centers the image within its container */
+                    transition: transform 0.4s ease; /* Smooth zoom on hover */
+                "
+                                            onmouseover="this.style.transform='scale(1.08)';"
+                                            onmouseout="this.style.transform='scale(1)';">
+                                        <span class="status"
+                                            style="
+                    position: absolute;
+                    top: 15px;
+                    left: 15px;
+                    background-color: #8e44ad; /* Deep purple for status badge */
+                    color: #fff;
+                    padding: 5px 12px;
+                    border-radius: 5px;
+                    font-size: 0.85rem;
+                    font-weight: 600;
+                    z-index: 10;
+                    text-transform: uppercase;
+                ">50%
+                                            Off</span>
+                                        <div class="overlay"
+                                            style="
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: rgba(44, 62, 80, 0.4); /* Dark blue-grey overlay */
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                "
+                                            onmouseover="this.style.opacity='1';"></div>
                                     </a>
-                                    <div class="text py-3 pb-4 px-3">
-                                        <div class="d-flex">
-                                            <div class="cat">
-                                                <span>{{ $data->category }}</span>
+                                    <div class="text py-3 pb-4 px-3"
+                                        style="flex-grow: 1; display: flex; flex-direction: column;">
+                                        <div class="d-flex" style="margin-bottom: 10px;">
+                                            <div class="cat" style="flex-grow: 1;">
+                                                <span
+                                                    style="font-size: 0.9rem; color: #7f8c8d; text-transform: uppercase;">{{ $data->category }}</span>
                                             </div>
-                                            <div class="rating">
-                                                <p class="text-right mb-0">
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                </p>
-                                            </div>
+                                            @include('pages.additional.reviews.reviews-stars-custom')
+
                                         </div>
-                                        <h3><a href="{{ $data->getLink() }}">{{ $data->title }}</a></h3>
+                                        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 10px;">
+                                            <a href="{{ $data->getLink() }}"
+                                                style="color: #2c3e50; text-decoration: none; transition: color 0.3s ease;"
+                                                onmouseover="this.style.color='#8e44ad';"
+                                                onmouseout="this.style.color='#2c3e50';">
+                                                {{ $data->title }}
+                                            </a>
+                                        </h3>
                                         <div class="pricing">
-                                            {{-- <p class="price"><span class="mr-2 price-dc">$120.00</span> --}}
-                                            <span class="price-sale">${{ $data->getPrice() }}</span>
+                                            <p class="price"
+                                                style="font-size: 1.4rem; font-weight: 700; color: #2c3e50;">
+                                                <span class="price-sale">${{ $data->getPrice() }}</span>
                                             </p>
                                         </div>
-                                        <p class="bottom-area d-flex px-3">
+                                        <p class="bottom-area d-flex px-3"
+                                            style="
+                    margin-top: auto; /* Pushes buttons to the bottom of the card */
+                    padding-top: 15px; /* Add padding above buttons */
+                    border-top: 1px solid #eee; /* Separator line for buttons */
+                    justify-content: space-between; /* Space out buttons */
+                    align-items: center;
+                ">
                                             <a href="{{ route('cart.addfromstorepage', ['id' => $data->id]) }}"
-                                                class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i
-                                                        class="ion-ios-add ml-1"></i></span></a>
-                                            <a href="{{ $data->getLink() }}"
-                                                class="buy-now text-center py-2">Details<span><i
-                                                        class="ion-ios-cart ml-1"></i></span></a>
+                                                class="add-to-cart text-center py-2 mr-1"
+                                                style="
+                        flex: 1; /* Allow buttons to take equal space */
+                        background-color: #8e44ad; /* Deep purple for add to cart */
+                        color: #fff;
+                        border-radius: 5px;
+                        text-decoration: none;
+                        font-weight: 600;
+                        font-size: 0.9rem;
+                        padding: 10px 15px;
+                        transition: background-color 0.3s ease, transform 0.2s ease;
+                    "
+                                                onmouseover="this.style.backgroundColor='#6c3483'; this.style.transform='translateY(-2px)';"
+                                                onmouseout="this.style.backgroundColor='#8e44ad'; this.style.transform='translateY(0)';">
+                                                <span>Add to cart <i class="ion-ios-add ml-1"></i></span>
+                                            </a>
+                                            <a href="{{ $data->getLink() }}" class="buy-now text-center py-2"
+                                                style="
+                        flex: 1; /* Allow buttons to take equal space */
+                        margin-left: 10px; /* Space between buttons */
+                        background-color: #34495e; /* Darker blue-grey for details button */
+                        color: #fff;
+                        border-radius: 5px;
+                        text-decoration: none;
+                        font-weight: 600;
+                        font-size: 0.9rem;
+                        padding: 10px 15px;
+                        transition: background-color 0.3s ease, transform 0.2s ease;
+                    "
+                                                onmouseover="this.style.backgroundColor='#2c3e50'; this.style.transform='translateY(-2px)';"
+                                                onmouseout="this.style.backgroundColor='#34495e'; this.style.transform='translateY(0)';">
+                                                Details<span><i class="ion-ios-cart ml-1"></i></span>
+                                            </a>
                                         </p>
                                     </div>
                                 </div>

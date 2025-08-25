@@ -1,13 +1,14 @@
 <?php
-use App\Http\Controllers\admin\AdminDashboardController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\CheckoutPaymentController;
-use App\Http\Controllers\CheckoutSuccessController;
-use App\Http\Controllers\DetailController;
-use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\DetailController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\reviews\ReviewController;
+use App\Http\Controllers\CheckoutPaymentController;
+use App\Http\Controllers\CheckoutSuccessController;
+use App\Http\Controllers\admin\AdminDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,16 +26,17 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
-Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+
 Route::get('/store', [ProductController::class, 'index'])->name('store.index');
 Route::get('/shop', [ProductController::class, 'index'])->name('shop.index');
 
 Route::get('/details/{id}', [DetailController::class, 'index'])->name('store.details');
 Route::get('/details/{id}', [DetailController::class, 'index'])->name('shop.details');
-
+Route::get('/admin/dashboard/printable', [AdminDashboardController::class, 'printable'])->name('admin.dashboard.printable');
 Route::middleware(['auth'])->group(function () {
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-
+   Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+   Route::resource('single-product.reviews', ReviewController::class)->shallow();
     Route::put('/cart', [CartController::class, 'store'])->name('cart.store');
 
     Route::get('/cart/add/{id}', [CartController::class, 'addToCartFromStore'])->name('cart.addfromstorepage');

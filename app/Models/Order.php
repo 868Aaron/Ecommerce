@@ -1,18 +1,14 @@
 <?php
-
 namespace App\Models;
-
 use App\Models\Product;
 use App\Models\OrderProduct;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-
 class Order extends Model
 {
     use HasFactory;
-
     /**
      * The products that belong to the Order
      *
@@ -24,8 +20,7 @@ class Order extends Model
     ->withPivot('id', 'product_id', 'user_id', 'price', 'quantity')
     ->withTimestamps();
     }
-
-    /**
+        /**
      * Get all of the order_products for the Order
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -34,5 +29,11 @@ class Order extends Model
     {
         return $this->hasMany(OrderProduct::class, 'order_id');
     }
+
+    public function scopePaidOrders($query, $status = 'paid')
+    {
+    return $query->where('payment_status', $status);
+    }
+
 
 }

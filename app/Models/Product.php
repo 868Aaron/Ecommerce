@@ -3,15 +3,18 @@
 namespace App\Models;
 
 use App\Helpers\ProductCollectionHelper;
+use App\Models\reviews\Review;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
     use HasFactory;
-protected $fillable = [
+
+    protected $fillable = [
         'name',
         'title',
         'short_description',
@@ -28,7 +31,8 @@ protected $fillable = [
     /**
      * Create a new Eloquent Collection instance.
      *
-     * @param  array<int, \Illuminate\Database\Eloquent\Model>  $models
+     * @param array<int, \Illuminate\Database\Eloquent\Model> $models
+     *
      * @return \Illuminate\Database\Eloquent\Collection<int, \Illuminate\Database\Eloquent\Model>
      */
     public function newCollection(array $models = []): Collection
@@ -36,10 +40,15 @@ protected $fillable = [
         return new ProductCollectionHelper($models);
     }
 
+    public function BACKUPscopeWithPrices(Builder $query, array $group_ids = [1])
+    {
+        $query->where('products.id', '>', 0);
+    }
 
     public function scopeWithPrices(Builder $query, array $group_ids = [1])
     {
-        $query->where('products.id', '>', 0);
+        $query->where('products.id', '>', 0)
+        ->withRatings();
     }
 
     public function scopeSingleProduct(Builder $query, int $id)
@@ -62,17 +71,44 @@ protected $fillable = [
         return $this->price;
     }
 
-
     public function getCartQuantityPrice()
     {
         return $this->getPrice() * $this->pivot->quantity;
     }
-
 
     public function getLink()
     {
         return route('shop.details', ['id' => $this->id]);
     }
 
-
+    /**
+     * Get all of the comments for the Product.
+     */
+   public function reviews(): HasMany
+{
+    return $this->hasMany(Review::class, 'product_id');
 }
+
+
+    public function scopeWithRatings(Builder $query)
+    {
+        // for each product get the reviews
+        $query->with('reviews')
+
+        // count reviews for each product
+        ->withCount('reviews as total_reviews')
+
+        // Count average rating only for verified reviews
+        ->withAvg(
+            ['reviews as average_rating' => function ($query) {
+                $query->where('verified', 1);
+            },
+            ], 'rating')
+        ;
+    }
+     public function orderProducts(): HasMany
+    {
+        return $this->hasMany(OrderProduct::class);
+    }
+}
+

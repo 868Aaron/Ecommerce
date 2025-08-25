@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             [
                 'name' => 'John Doe',
+                'role' => 'admin',
                 'email' => 'johndoe@mail.com',
                 'email_verified_at' => Carbon::now(),
                 'password' => Hash::make('Password1'),
@@ -25,7 +26,17 @@ class UserSeeder extends Seeder
             ],
             [
                 'name' => 'Jane Doe',
+                 'role' => 'user',
                 'email' => 'janedoe@mail.com',
+                'password' => Hash::make('Password1'),
+                'email_verified_at' => Carbon::now(),
+                'created_at' => Carbon::now(),
+                'updated_at' => null,
+            ],
+            [
+                'name' => 'Mary Doe',
+                 'role' => 'user',
+                'email' => 'marydoe@mail.com',
                 'password' => Hash::make('Password1'),
                 'email_verified_at' => Carbon::now(),
                 'created_at' => Carbon::now(),
