@@ -5,6 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\reviews\ReviewController;
 use App\Http\Controllers\CheckoutPaymentController;
 use App\Http\Controllers\CheckoutSuccessController;
@@ -34,6 +35,11 @@ Route::get('/details/{id}', [DetailController::class, 'index'])->name('store.det
 Route::get('/details/{id}', [DetailController::class, 'index'])->name('shop.details');
 Route::get('/admin/dashboard/printable', [AdminDashboardController::class, 'printable'])->name('admin.dashboard.printable');
 Route::middleware(['auth'])->group(function () {
+     // Route to load wishlist page
+    Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
+    Route::put('/wishlist', [WishlistController::class, 'store'])->name('wishlist.store');
+    Route::get('/wishlist/add/{id}', [WishlistController::class, 'addToWishlistFromStore'])->name('wishlist.addfromstorepage');
+    Route::delete('/wishlist/{id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
    Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
    Route::resource('single-product.reviews', ReviewController::class)->shallow();

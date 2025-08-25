@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Order;
-use App\Models\OrderProduct;
-use App\Models\Product;
 use App\Models\User;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\OrderProduct;
+use App\Events\ReviewCreated;
+use App\Models\reviews\Review;
 use Illuminate\Database\Seeder;
 
 class AppSeeder extends Seeder
@@ -52,5 +54,30 @@ class AppSeeder extends Seeder
                         'created_at' => $order->created_at,
                     ]);
             });
+            // Random reviews by random users
+        Review::factory(30)
+            ->randomUsers($user_ids)
+            ->randomProducts($product_ids)
+            ->state(function () {
+                return [
+                    'verified' => rand(0, 1),
+                ];
+            })
+            ->create()
+            ->each(function ($review) {
+                ReviewCreated::dispatch($review);
+            });
+        // All purchased products get good reviews
+        $order_data = OrderProduct::all();
+        $order_data->each(function ($order) {
+            $review = Review::factory()
+                ->goodRatings()
+                ->create([
+                    'user_id' => $order->user_id,
+                    'product_id' => $order->product_id,
+                    'verified' => true,
+                ]);
+            ReviewCreated::dispatch($review);
+        });
     }
 }

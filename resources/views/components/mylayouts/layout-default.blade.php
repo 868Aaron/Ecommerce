@@ -291,8 +291,9 @@
                         <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
                         </li>
                     @endauth
-                    <li class="nav-item">
-                        <a href="#" class="nav-link" style="display: flex; align-items: center; gap: 5px;">
+                    <li class="current-list-item">
+                        <a href="{{ route('wishlist.store') }}" class="nav-link"
+                            style="display: flex; align-items: center; gap: 5px; text-decoration: none; color: inherit;">
                             <span class="icon-heart"></span> Wishlist
                         </a>
                     </li>
@@ -325,7 +326,8 @@
                     <div class="row no-gutters slider-text align-items-center justify-content-center">
                         <div class="col-md-9 ftco-animate text-center">
                             <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span>
-                                <span>Shop</span></p>
+                                <span>Shop</span>
+                            </p>
                             <h1 class="mb-0 bread">{{ $title }}</h1>
                         </div>
                     </div>
@@ -341,7 +343,8 @@
                 <div class="row no-gutters slider-text align-items-center justify-content-center">
                     <div class="col-md-9 ftco-animate text-center">
                         <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span>
-                            <span>Shop</span></p>
+                            <span>Shop</span>
+                        </p>
                         <h1 class="mb-0 bread">Shop</h1>
                     </div>
                 </div>

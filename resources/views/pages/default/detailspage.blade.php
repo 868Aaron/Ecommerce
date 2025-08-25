@@ -77,58 +77,44 @@
                         {{ $data->short_description }}
                     </div>
 
-                    <form action="{{ route('cart.store') }}" method="POST">
+                    <form style="margin-bottom: 20px;">
                         @csrf
                         @method('PUT')
+                        <input type="hidden" name="product_id" value="{{ $data->id }}">
 
-                        <div class="row mt-4">
-                            <div class="w-100"></div>
-
-                            {{-- Quantity Input Group --}}
-                            <div class="input-group col-md-6 d-flex mb-3 custom-inputs"
-                                style="max-width: 200px; display: flex; align-items: center; justify-content: flex-start;">
-
-
-
-                                {{-- Quantity Input Field --}}
-                                <input type="text" id="quantity" name="quantity"
-                                    class="quantity form-control input-number" value="1" min="1"
-                                    max="100"
-                                    style="text-align: center; border: 1px solid #ccc; border-radius: 5px; height: 40px;
-                  font-size: 1rem; color: #333; width: 80px; flex-shrink: 0; margin: 0;">
-
-
-                            </div>
-
-
-                            <input type="hidden" name="product_id" value="{{ $data->id }}">
-
-                            <div class="w-100"></div>
-                            <div class="col-md-12" style="margin-bottom: 1.5rem;">
-                                <p style="color: #7f8c8d; font-size: 0.95rem;">80 piece available</p>
-                            </div>
+                        <!-- Single Quantity Input -->
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                            <input type="number" id="quantity" name="quantity" value="1" min="1"
+                                max="100"
+                                style="text-align: center; border: 1px solid #ccc; border-radius: 8px; height: 42px;
+                   font-size: 1rem; color: #333; width: 90px; padding: 5px;">
+                            <span style="color: #7f8c8d; font-size: 0.9rem;">80 pieces available</span>
                         </div>
-                        <button type="submit" class="btn btn-primary py-3 px-5 mr-2"
-                            style="
-                            background-color: #8e44ad; /* Deep purple for Add to Cart button */
-                            border: none;
-                            border-radius: 5px;
-                            font-size: 1.1rem;
-                            font-weight: 600;
-                            padding: 12px 30px;
-                            transition: background-color 0.3s ease, transform 0.2s ease;
-                        "
-                            onmouseover="this.style.backgroundColor='#6c3483'; this.style.transform='translateY(-2px)';"
-                            onmouseout="this.style.backgroundColor='#8e44ad'; this.style.transform='translateY(0)';">
-                            Add to Cart
-                        </button>
-                    </form>
 
+                        <!-- Buttons Side by Side -->
+                        <div style="display: flex; gap: 10px;">
+                            <!-- Add to Cart -->
+                            <button formaction="{{ route('cart.store') }}" formmethod="POST" type="submit"
+                                style="background-color: #8e44ad; color: white; border: none; border-radius: 8px;
+                   font-size: 1.05rem; font-weight: 600; padding: 12px 30px; cursor: pointer;
+                   transition: background-color 0.3s ease, transform 0.2s ease;">
+                                Add to Cart
+                            </button>
+
+                            <!-- Wishlist -->
+                            <button formaction="{{ route('wishlist.store') }}" formmethod="POST" type="submit"
+                                style="background-color: #9b59b6; color: white; border: none; border-radius: 8px;
+                   font-size: 1.05rem; font-weight: 600; padding: 12px 30px; cursor: pointer;
+                   transition: background-color 0.3s ease, transform 0.2s ease;">
+                                Save for Later
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </div>
-        <!-- Reviews -->
-        @include('pages.additional.reviews.reviews-preview')
+
+            <!-- Reviews -->
+            @include('pages.additional.reviews.reviews-preview')
         </div>
 
     </section>
