@@ -398,9 +398,9 @@
                                         delivery.
 
                                         We built ShopSphere to make online shopping simple, secure, and rewarding. Enjoy
-                                        loyalty points, exclusive deals, and a seamless checkout experience.
+                                        exclusive deals, and a seamless checkout experience.
 
-                                        Discover eco-friendly shopping options, secure payments, and transparent
+                                        Discover wonderful shopping options, secure payments, and transparent
                                         pricing all powered by a platform made for our local community.
 
                                         ShopSphere connects you to trusted sellers across the country, bringing global
@@ -425,11 +425,11 @@
                         <div class="one-forth d-flex js-fullheight align-items-center ftco-animate"
                             data-scrollax=" properties: { translateY: '70%' }">
                             <div class="text">
-                                <span class="subheading">Winkel eCommerce Shop</span>
+                                <span class="subheading">ShopSphere</span>
                                 <div class="horizontal">
-                                    <h3 class="vr" style="background-image: url(images/divider.jpg);">Best eCommerce
-                                        Online Shop</h3>
-                                    <h1 class="mb-4 mt-3">A Thouroughly <span>Modern</span> Woman</h1>
+                                    <h3 class="vr" style="background-image: url(images/divider.jpg);">Established
+                                        Since 2022</h3>
+                                    <h1 class="mb-4 mt-3">Catch the Best Deals in Tech, Fashion & More</span> Woman</h1>
                                     <p>A small river named Duden flows by their place and supplies it with the necessary
                                         regelialia. It is a paradisematic country.</p>
                                     <p><a href="#" class="btn btn-primary px-5 py-3 mt-3"
