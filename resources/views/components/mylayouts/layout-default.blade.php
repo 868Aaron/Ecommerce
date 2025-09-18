@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>XS Dolls Boutique - Apparel for Petite Women</title>
+    <title>ShopSphere</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -223,12 +223,12 @@
                         <div class="col-md pr-4 d-flex topper align-items-center">
                             <div class="icon mr-2 d-flex justify-content-center align-items-center"><span
                                     class="icon-phone2"></span></div>
-                            <span class="text">+ 1235 2355 98</span>
+                            <span class="text">1 (868) 555-0145</span>
                         </div>
                         <div class="col-md pr-4 d-flex topper align-items-center">
                             <div class="icon mr-2 d-flex justify-content-center align-items-center"><span
                                     class="icon-paper-plane"></span></div>
-                            <span class="text">youremail@email.com</span>
+                            <span class="text">hello@shopsphere.tt</span>
                         </div>
                         <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
                             <span class="text">3-5 Business days delivery &amp; Free Returns</span>
@@ -370,8 +370,9 @@
             <div class="row mb-5">
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">XS Dolls Boutique</h2>
-                        <p>Discover perfectly tailored apparel for petite women. Style that fits, designed for you.</p>
+                        <h2 class="ftco-heading-2">ShopSphere</h2>
+                        <p>ShopSphere is Trinidad & Tobago’s all-in-one online marketplace. From phones to fashion,
+                            discover the latest products at unbeatable prices with fast local delivery.</p>
                         <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                             <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                             <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -412,14 +413,13 @@
                         <h2 class="ftco-heading-2">Have a Questions?</h2>
                         <div class="block-23 mb-3">
                             <ul>
-                                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St.
-                                        Mountain
-                                        View, San Francisco, California, USA</span></li>
-                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2
-                                            392 3929
-                                            210</span></a></li>
+                                <li><span class="icon icon-map-marker"></span><span class="text">ShopSphere
+                                        Headquarters
+                                        C3 Centre Mall, San Fernando, Trinidad and Tobago</span></li>
+                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+1
+                                            (868) 555-0145</span></a></li>
                                 <li><a href="#"><span class="icon icon-envelope"></span><span
-                                            class="text">info@yourdomain.com</span></a></li>
+                                            class="text">hello@shopsphere.tt</span></a></li>
                             </ul>
                         </div>
                     </div>
